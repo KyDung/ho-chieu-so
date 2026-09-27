@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hộ chiếu số – Trang giáo viên</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="t">
+<header class="bar">
+  <div class="bar-in">
+    <div class="logo"><span class="logo-mark" aria-hidden="true">🧑‍🏫</span><span><b>HỘ CHIẾU SỐ</b><small>Trang giáo viên · Bài 10</small></span></div>
+    <div class="timer" aria-label="Đồng hồ đếm ngược">
+      <button data-min="5">5'</button><button data-min="8">8'</button><button data-min="10">10'</button><button data-min="12">12'</button><button data-min="15">15'</button><button data-min="18">18'</button>
+      <button id="tMinus" title="Bớt 1 phút">−1</button><span class="clock" id="clock">00:00</span><button id="tPlus" title="Thêm 1 phút">+1</button>
+      <button id="tToggle" title="Chạy / dừng">▶</button><button id="tReset" title="Đặt lại">↺</button>
+    </div>
+  </div>
+  <nav class="tabs" id="tabs"></nav>
+</header>
+<main id="tmain"></main>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/answers.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="js/teacher.js"></script>
+</body>
+</html>
