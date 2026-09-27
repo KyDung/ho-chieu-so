@@ -1,17 +1,17 @@
 # Hộ chiếu số – Tin học 10, Bài 10
 
-Web hỗ trợ 2 tiết thực hành **Bài 10. Thực hành khai thác tài nguyên trên Internet**. Học sinh đi qua 7 trạm, qua mỗi trạm được đóng một con dấu vào "hộ chiếu". Các em thao tác trên **công cụ thật** (Google Dịch, camera dịch, dịch trang của trình duyệt, kho học liệu mở). Sản phẩm được nộp lên **Padlet** chỉ bằng một nút bấm.
+Web hỗ trợ 2 tiết thực hành **Bài 10. Thực hành khai thác tài nguyên trên Internet**. Học sinh đi qua 6 trạm, qua mỗi trạm được đóng một con dấu vào "hộ chiếu". Các em thao tác trên **công cụ thật** (Google Dịch, camera dịch, dịch trang của trình duyệt, kho học liệu mở). Sản phẩm được nộp lên **Padlet** chỉ bằng một nút bấm.
 
 Đây là web tĩnh: không máy chủ, không đăng nhập. Bài làm lưu trong trình duyệt của từng máy.
 
 | Tệp | Dùng để |
 |---|---|
-| `index.html` | Trang học sinh (bản đồ hành trình, 7 trạm, hộ chiếu) |
+| `index.html` | Trang học sinh (bản đồ hành trình, 6 trạm, hộ chiếu) |
 | `teacher.html` | Trang giáo viên: dán link Padlet, mã QR, đồng hồ, trình chiếu, đáp án, rubric |
 | `js/config.js` | Link Padlet cố định (không bắt buộc), địa chỉ trang học sinh |
 | `js/data.js` | Toàn bộ nội dung các trạm (sửa câu chữ tại đây) |
 | `js/answers.js` | Đáp án đọc được, **chỉ trang giáo viên tải** |
-| `assets/` | Tài nguyên giải mã: biển tiếng Hàn, poster tiếng Nhật, thư Word tiếng Tây Ban Nha, trang web tiếng Nga |
+| `assets/` | Tài nguyên giải mã: biển thư viện tiếng Pháp, poster tiếng Nhật, thư Word tiếng Tây Ban Nha, trang web tiếng Nga |
 
 ## 1. Các trạm
 
@@ -21,9 +21,8 @@ Web hỗ trợ 2 tiết thực hành **Bài 10. Thực hành khai thác tài ngu
 | 1 | Trạm 1 – Khám phá Google Dịch (8') | Đọc trang giới thiệu 8 tính năng của Google Dịch, rồi giải 7 tình huống (có ảnh minh hoạ) | Tự chấm, có "cách làm" |
 | 1 | Trạm 2 – Phá 3 ổ khoá (12') | Dịch ảnh tiếng Nhật, tệp Word tiếng Tây Ban Nha, trang web tiếng Nga để tìm 3 từ khoá | Web tự kiểm tra (đáp án lưu dạng mã băm) |
 | 1 | Trạm 3 – Dịch thư gửi bạn quốc tế (15') | Đọc lá thư tiếng Việt có sẵn → dịch sang tiếng Anh bằng Google Dịch → nghe và kiểm tra lại. Web kiểm tra sơ bộ bản dán và độ dài; học sinh tự so ý với thư gốc | Bản dịch lưu lại, nộp ở Về đích |
-| 2 | Trạm 4 – Học liệu mở & giấy phép (10') | Đọc hiểu học liệu mở, kí hiệu CC, **quy tắc ghép CC → BY → (NC) → (SA hoặc ND)**; 4 câu viết đúng/sai + 7 tình huống | Tự chấm |
-| 2 | Trạm 5 – Săn học liệu mở (15') | Chọn 1 trong 8 bài học → tìm trên Google (từ khoá điền sẵn) → mở trang học liệu đáng tin → dán link | Link lưu lại, nộp ở Về đích |
-| 2 | Về đích (8') | 6 câu tình huống + 1 câu suy ngẫm → hiện **toàn bộ bài làm** → nộp Padlet **một lần** | Toàn bộ bài → Padlet |
+| 2 | Trạm 4 – Săn học liệu mở (22') | Đọc nhanh học liệu mở là gì → chọn 1 trong 8 bài học → tìm trên Google (từ khoá điền sẵn) → mở trang học liệu đáng tin → dán link | Link lưu lại, nộp ở Về đích |
+| 2 | Về đích (10') | 6 câu tình huống + 1 câu suy ngẫm → hiện **toàn bộ bài làm** → nộp Padlet **một lần** | Toàn bộ bài → Padlet |
 
 Đáp án 3 ổ khoá (chấp nhận tiếng Việt hoặc tiếng Anh, có dấu hay không dấu): hướng dương / sunflower · bướm / butterfly · cầu vồng / rainbow.
 
@@ -55,6 +54,6 @@ Link Padlet của lớp đã được điền sẵn trong `js/config.js`. Muốn
 ## 5. Kiểm tra trước giờ dạy
 
 - Đi thử một vòng trang học sinh trên máy phòng máy, đặc biệt 3 ổ khoá: thẻ **Hình ảnh** và **Tài liệu** của Google Dịch, và "Dịch sang Tiếng Việt" của Chrome/Edge.
-- Kiểm tra các kho học liệu ở Trạm 5 truy cập được từ mạng trường.
+- Kiểm tra các kho học liệu ở Trạm 4 truy cập được từ mạng trường.
 - Cho phép học sinh dùng điện thoại ở phần Khởi động.
 - Dùng nút **🗑 Xoá dữ liệu trên máy này** (trang Hộ chiếu) khi lớp khác dùng lại máy.

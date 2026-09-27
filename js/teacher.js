@@ -51,8 +51,7 @@
     { id: 'tools', label: '🧰 Trạm 1' },
     { id: 'locks', label: '🔐 Trạm 2' },
     { id: 'desk', label: '✍️ Trạm 3' },
-    { id: 'lic', label: '⚖️ Trạm 4' },
-    { id: 'hunt', label: '📚 Trạm 5' },
+    { id: 'hunt', label: '📚 Trạm 4' },
     { id: 'exit', label: '🏁 Về đích' },
     { id: 'sum', label: '⭐ Chốt kiến thức' },
     { id: 'eval', label: '📝 Đánh giá' },
@@ -79,7 +78,7 @@
         <ol class="steps">
           <li>Mở thử trang học sinh, đi hết một vòng (hoặc nhờ 1 học sinh làm mẫu).</li>
           <li>Thử 3 ổ khoá của Trạm 2 trên máy phòng máy: tải ảnh, tải tệp Word, mở trang tiếng Nga và dùng "Dịch sang Tiếng Việt" của Chrome/Edge.</li>
-          <li>Kiểm tra 5 kho học liệu ở Trạm 5 (Wikipedia, Commons, Hoclieu.vn, Hành trang số, Học liệu số NXBGD) truy cập được từ mạng của trường.</li>
+          <li>Kiểm tra các kho học liệu hay gặp ở Trạm 4 (Wikipedia, Commons, Hoclieu.vn, Hành trang số, Học liệu số NXBGD) truy cập được từ mạng của trường.</li>
           <li>Nếu muốn, thêm ảnh minh hoạ Trạm 1 vào thư mục <code>assets/tram1/</code> theo tệp <code>DANH_SACH_ANH.md</code>.</li>
           <li>Cho phép học sinh dùng điện thoại ở phần Khởi động (camera dịch).</li>
         </ol>
@@ -123,25 +122,14 @@
 `,
 
     hunt: () => `${stHead('hunt')}
-      <section class="card proj"><h3>Quy trình 3 bước (mỗi học sinh)</h3><ol class="steps"><li><b>Chọn một bài học</b> trong 8 bài (GV có thể giao theo tổ).</li><li><b>Tìm trên Google</b> (web điền sẵn từ khoá "… ${esc(D.searchSuffix)}"), chọn một trang học liệu đáng tin và mở ra.</li><li><b>Dán link</b> trang đó và tên trang/kho vào web. Sản phẩm được nộp cùng toàn bài ở chặng Về đích.</li></ol></section>
+      <div class="grid3 proj">${D.oerIntro.map(([t, x]) => `<section class="card tint" style="margin:0"><h3>${esc(t)}</h3><p style="margin:6px 0 0">${esc(x)}</p></section>`).join('')}</div>
+      <section class="card proj" style="margin-top:14px"><h3>Quy trình 3 bước (mỗi học sinh)</h3><ol class="steps"><li><b>Chọn một bài học</b> trong 8 bài (GV có thể giao theo tổ).</li><li><b>Tìm trên Google</b> (web điền sẵn từ khoá "… ${esc(D.searchSuffix)}"), chọn một trang học liệu đáng tin và mở ra.</li><li><b>Dán link</b> trang đó và tên trang/kho vào web. Sản phẩm được nộp cùng toàn bài ở chặng Về đích.</li></ol></section>
       <section class="card"><h3>8 bài học</h3><table class="t"><tr><th>#</th><th>Môn</th><th>Bài học</th><th>Từ khoá tìm kiếm</th></tr>${D.topics.map((x) => `<tr><td>${x.no}</td><td>${esc(x.subject)}</td><td>${x.icon} ${esc(x.title)}</td><td>${esc(x.kw)} ${esc(D.searchSuffix)}</td></tr>`).join('')}</table></section>
       <div class="grid2">
         <div class="signs good"><b>✅ Trang đáng tin thường là</b><ul>${D.goodSigns.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>
         <div class="signs bad"><b>⛔ Nên tránh</b><ul>${D.badSigns.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>
       </div>
-      <section class="card tint" style="margin-top:14px"><b>Báo cáo:</b> mời 3–4 bạn tìm được các trang khác nhau chia sẻ nhanh: tìm được trang nào, vì sao tin trang đó, trang có giấy phép gì. Gợi ý các kho tiếng Việt hay gặp: Wikipedia tiếng Việt, Wikimedia Commons, Hoclieu.vn, Hành trang số, Học liệu số (NXBGD).</section>`,
-
-    lic: () => `${stHead('lic')}
-      <div class="grid3 proj">${D.oerIntro.map(([t, x]) => `<section class="card tint" style="margin:0"><h3>${esc(t)}</h3><p style="margin:6px 0 0">${esc(x)}</p></section>`).join('')}</div>
-      <section class="card proj" style="margin-top:14px"><div class="cc-legend">${D.ccLegend.map((c) => `<span class="cc"><b>${c.code}</b>${c.icon} ${esc(c.text)}</span>`).join('')}</div>
-        <h3 style="margin-top:14px">Quy tắc ghép kí hiệu</h3>
-        <div class="cc-chain"><span class="cc-box">CC</span><b>→</b><span class="cc-box">BY</span><b>→</b><span class="cc-box opt-box">NC<small>nếu có</small></span><b>→</b><span class="cc-box opt-box">SA <i>hoặc</i> ND<small>nếu có</small></span></div>
-        <ol class="steps">${D.ccRules.map(([, a, b]) => `<li>${a}. <span class="muted">${esc(b)}</span></li>`).join('')}</ol>
-        <table class="t">${D.ccList.map(([a, b]) => `<tr><td style="width:170px"><b>${esc(a)}</b></td><td>${esc(b)}</td></tr>`).join('')}</table></section>
-      <section class="card arr-box"><h3>${D.arr.icon} Còn nếu tài liệu KHÔNG ghi giấy phép CC nào?</h3><p style="margin:6px 0 0">${esc(D.arr.text)}</p></section>
-      <section class="card"><h3>Đáp án phần "Viết đúng hay sai?"</h3><table class="t"><tr><th>#</th><th>Tên giấy phép</th><th>Đáp án</th><th>Giải thích</th></tr>${D.ccOrder.map((x, i) => `<tr><td>${i + 1}</td><td><b>${esc(x.tag)}</b></td><td><b>${x.a ? '✅ Đúng' : '❌ Sai'}</b></td><td>${esc(x.why)}</td></tr>`).join('')}</table></section>
-      <section class="card"><table class="t"><tr><th>#</th><th>Giấy phép</th><th>Tình huống</th><th>Đáp án</th><th>Giải thích</th></tr>
-      ${D.lic.map((x, i) => `<tr><td>${i + 1}</td><td><b>${esc(x.tag)}</b></td><td>${esc(x.sit)}</td><td><b>${x.a ? '✅ Được' : '❌ Không'}</b></td><td>${esc(x.why)}</td></tr>`).join('')}</table></section>`,
+      <section class="card tint" style="margin-top:14px"><b>Báo cáo:</b> mời 3–4 bạn tìm được các trang khác nhau chia sẻ nhanh: tìm được trang nào, vì sao tin trang đó, trang có ghi tác giả, nguồn không. Gợi ý các kho tiếng Việt hay gặp: Wikipedia tiếng Việt, Wikimedia Commons, Hoclieu.vn, Hành trang số, Học liệu số (NXBGD).</section>`,
 
     exit: () => `${stHead('exit')}
       <section class="card"><table class="t"><tr><th>Câu</th><th>Nội dung</th><th>Đáp án</th></tr>
@@ -154,16 +142,16 @@
         <li>Viết câu rõ ràng, đúng chính tả, <b>dịch ngược để kiểm tra</b>; dùng 🔊 luyện nghe</li>
         <li>Dịch máy là <b>trợ lí</b>, không nộp nguyên bản dịch máy như bài của mình</li></ul></section>
       <section class="card"><h2>📚 Mở kho tri thức</h2><ul>
-        <li><b>Học liệu mở</b>: tài liệu học tập chia sẻ công khai, dùng miễn phí theo giấy phép của tác giả</li>
+        <li><b>Học liệu mở</b>: tài liệu học tập chia sẻ công khai trên Internet, ai cũng dùng được miễn phí</li>
         <li>Tìm trên Google bằng từ khoá + "học liệu mở"; chọn trang đáng tin (.edu.vn, .gov.vn, nhà xuất bản, Wikipedia…)</li>
-        <li>Giấy phép CC ghép theo quy tắc: <b>CC → BY → (NC) → (SA hoặc ND)</b></li>
-        <li>Đọc giấy phép CC (BY, SA, NC, ND, CC0), <b>luôn ghi nguồn</b> khi dùng lại</li></ul></section></div>`,
+        <li>Tránh trang nhiều quảng cáo, đòi tải phần mềm lạ hoặc nhập mật khẩu</li>
+        <li>Dùng lại học liệu thì <b>luôn ghi nguồn</b></li></ul></section></div>`,
 
     eval: () => `
       <section class="card"><h2>Cách đánh giá trong bài</h2>
-      <p>Học sinh đăng <b>1 bài</b> lên Padlet sau chặng Về đích (tiêu đề "Bài làm trên lớp – Họ tên – Lớp"), gồm: kết quả 7 trạm, lá thư (Việt + Anh), trang học liệu tìm được, câu suy ngẫm. Một tuần sau, đăng thêm <b>1 bài</b> nữa cho Vận dụng (tiêu đề "Vận dụng – Họ tên – Lớp"). Không cần chia cột, lọc theo tên trên Padlet là đủ.</p>
+      <p>Học sinh đăng <b>1 bài</b> lên Padlet sau chặng Về đích (tiêu đề "Bài làm trên lớp – Họ tên – Lớp"), gồm: kết quả 6 trạm, lá thư (Việt + Anh), trang học liệu tìm được, câu suy ngẫm. Một tuần sau, đăng thêm <b>1 bài</b> nữa cho Vận dụng (tiêu đề "Vận dụng – Họ tên – Lớp"). Không cần chia cột, lọc theo tên trên Padlet là đủ.</p>
       <table class="t"><tr><th>Minh chứng</th><th>Cách thu</th><th>Đánh giá gì</th></tr>
-        <tr><td>Khởi động, 3 ổ khoá, Trạm 1, Trạm 4, Về đích</td><td>Web tự chấm, ghi trong bài nộp</td><td>Hiểu tính năng Google Dịch, kĩ năng dịch ảnh/tệp/trang web, giấy phép CC</td></tr>
+        <tr><td>Khởi động, Trạm 1, 3 ổ khoá, Về đích</td><td>Web tự chấm, ghi trong bài nộp</td><td>Hiểu tính năng Google Dịch, kĩ năng dịch ảnh/tệp/trang web</td></tr>
         <tr><td>Lá thư (Việt + Anh)</td><td>Trong bài "Bài làm trên lớp" trên Padlet</td><td>Dùng Google Dịch dịch văn bản và kiểm tra bản dịch (rubric bên dưới)</td></tr>
         <tr><td>Trang học liệu tìm được</td><td>Trong bài "Bài làm trên lớp" trên Padlet</td><td>Tìm kiếm, chọn nguồn đáng tin (rubric bên dưới)</td></tr>
         <tr><td>Bộ tài nguyên tự học</td><td>Bài "Vận dụng" trên Padlet</td><td>Vận dụng về nhà (rubric trong KHBD)</td></tr></table></section>

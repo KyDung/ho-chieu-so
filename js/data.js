@@ -14,11 +14,9 @@ window.B10 = {
       goal: 'Dịch một bức ảnh, một tệp Word và một trang web để tìm 3 từ khoá.' },
     { id: 'desk', no: 'Trạm 3', name: 'Dịch thư gửi bạn quốc tế', short: 'LÁ THƯ', emoji: '✉️', color: '#0ea5e9', time: '15 phút', part: 1,
       goal: 'Dùng Google Dịch chuyển lá thư tiếng Việt có sẵn sang tiếng Anh, nghe lại và kiểm tra bản dịch.' },
-    { id: 'lic', no: 'Trạm 4', name: 'Học liệu mở & giấy phép', short: 'BẢN QUYỀN', emoji: '⚖️', color: '#f59e0b', time: '10 phút', part: 2,
-      goal: 'Hiểu học liệu mở là gì và đọc được giấy phép Creative Commons trước khi dùng lại tài nguyên.' },
-    { id: 'hunt', no: 'Trạm 5', name: 'Săn học liệu mở', short: 'HỌC LIỆU', emoji: '📚', color: '#10b981', time: '15 phút', part: 2,
-      goal: 'Chọn một bài học, tự tìm trên Google một trang học liệu đáng tin về bài đó và dán link.' },
-    { id: 'exit', no: 'Chặng cuối', name: 'Về đích', short: 'VỀ ĐÍCH', emoji: '🏁', color: '#6366f1', time: '8 phút', part: 2,
+    { id: 'hunt', no: 'Trạm 4', name: 'Săn học liệu mở', short: 'HỌC LIỆU', emoji: '📚', color: '#10b981', time: '22 phút', part: 2,
+      goal: 'Hiểu học liệu mở là gì, rồi tự tìm trên Google một trang học liệu đáng tin cho một bài học và dán link.' },
+    { id: 'exit', no: 'Chặng cuối', name: 'Về đích', short: 'VỀ ĐÍCH', emoji: '🏁', color: '#6366f1', time: '10 phút', part: 2,
       goal: '6 tình huống cuối cùng để kiểm tra em đã sẵn sàng tự học với Internet.' },
   ],
 
@@ -146,62 +144,14 @@ window.B10 = {
     ],
   },
 
-  // ---------- TRẠM 4: HỌC LIỆU MỞ & GIẤY PHÉP ----------
+  // ---------- TRẠM 4: SĂN HỌC LIỆU MỞ – phần đọc hiểu ----------
   oerIntro: [
     ['📖 Học liệu mở là gì?', 'Là tài liệu học tập (bài giảng, video, sách điện tử, bài tập, hình ảnh…) được chia sẻ công khai trên Internet để ai cũng dùng được miễn phí.'],
     ['🏛️ Bắt đầu từ đâu?', 'Năm 2002, Học viện Công nghệ Massachusetts (MIT, Mỹ) đưa toàn bộ bài giảng lên mạng miễn phí. Từ đó nhiều trường, tổ chức trên thế giới làm theo.'],
-    ['⚖️ Miễn phí ≠ muốn làm gì cũng được', 'Tác giả gắn cho tài liệu một giấy phép, nói rõ em được làm gì. Phổ biến nhất là giấy phép Creative Commons (CC).'],
-  ],
-  ccLegend: [
-    { code: 'BY', icon: '👤', text: 'Ghi tên tác giả' },
-    { code: 'SA', icon: '🔄', text: 'Chia sẻ lại với cùng giấy phép' },
-    { code: 'NC', icon: '🚫💰', text: 'Không dùng để kiếm tiền' },
-    { code: 'ND', icon: '🚫✂️', text: 'Không được chỉnh sửa' },
-    { code: 'CC0', icon: '🎁', text: 'Tặng cộng đồng, dùng tự do' },
-  ],
-  ccRules: [
-    ['1', 'Luôn bắt đầu bằng <b>CC</b>', 'CC = Creative Commons, tên của bộ giấy phép.'],
-    ['2', 'Tiếp theo luôn là <b>BY</b>', 'Mọi giấy phép CC đều bắt buộc ghi tên tác giả (trừ CC0).'],
-    ['3', '<b>NC</b> (nếu có) đứng ngay sau BY', 'Thêm điều kiện "không dùng để kiếm tiền".'],
-    ['4', 'Cuối cùng là <b>SA</b> hoặc <b>ND</b>, không bao giờ có cả hai', 'SA cho phép sửa rồi chia sẻ lại, ND cấm sửa: hai điều này ngược nhau.'],
-  ],
-  ccList: [
-    ['CC0', 'Tặng cộng đồng, không cần xin phép'],
-    ['CC BY', 'Ghi tên tác giả'],
-    ['CC BY-SA', 'Ghi tên + chia sẻ lại cùng giấy phép'],
-    ['CC BY-NC', 'Ghi tên + không kiếm tiền'],
-    ['CC BY-NC-SA', 'Ghi tên + không kiếm tiền + chia sẻ lại cùng giấy phép'],
-    ['CC BY-ND', 'Ghi tên + không được sửa'],
-    ['CC BY-NC-ND', 'Ghi tên + không kiếm tiền + không được sửa (chặt nhất)'],
-  ],
-  ccOrder: [
-    { tag: 'CC BY-NC-SA', a: true, why: 'Đúng thứ tự: CC → BY → NC → SA.' },
-    { tag: 'CC SA-BY', a: false, why: 'BY phải đứng ngay sau CC. Viết đúng là CC BY-SA.' },
-    { tag: 'CC BY-SA-ND', a: false, why: 'Không bao giờ có cả SA và ND vì hai điều kiện này ngược nhau.' },
-    { tag: 'CC NC-BY', a: false, why: 'NC phải đứng sau BY. Viết đúng là CC BY-NC.' },
-  ],
-  ccExample: 'Các kí hiệu ghép với nhau. Ví dụ CC BY-NC-SA = phải ghi tên tác giả + không dùng để kiếm tiền + chia sẻ lại với cùng giấy phép.',
-  // "Bảo lưu mọi quyền" (All rights reserved) KHÔNG phải giấy phép CC — đây là quyền tác giả mặc định
-  // khi không ai cấp phép gì cả, ngược hẳn với CC0 (tặng tự do). Giải thích riêng để không lẫn với 5 kí hiệu CC.
-  arr: { icon: '©️', text: 'Bảo lưu mọi quyền — không phải một kiểu giấy phép CC, mà là mặc định khi tác giả KHÔNG cấp phép gì cả (ví dụ nhiều video, bài hát, bài báo). Người xem chỉ được xem/nghe; muốn tải về, đăng lại, chỉnh sửa hay chia sẻ đều phải xin phép tác giả trước. Đây là đầu ngược lại với CC0 (cho dùng tự do).' },
-  lic: [
-    { sit: 'Em đưa một bức ảnh vào bài thuyết trình trên lớp và ghi tên tác giả ngay dưới ảnh.', tag: 'CC BY', a: true,
-      why: 'CC BY cho phép dùng mọi mục đích, chỉ cần ghi tên tác giả. Em đã làm đúng.' },
-    { sit: 'Em dùng một video để làm quảng cáo bán hàng trực tuyến cho cửa hàng của gia đình.', tag: 'CC BY-NC', a: false,
-      why: 'NC = phi thương mại. Quảng cáo bán hàng là mục đích kiếm tiền nên không được.' },
-    { sit: 'Em cắt ghép một bức ảnh, thêm chữ lên ảnh rồi đăng ảnh đã sửa lên mạng xã hội.', tag: 'CC BY-ND', a: false,
-      why: 'ND = không được chỉnh sửa. Cắt ghép, thêm chữ là tạo tác phẩm phái sinh.' },
-    { sit: 'Em in một bảng tuần hoàn từ Internet để phát cho cả lớp ôn bài.', tag: 'CC0', a: true,
-      why: 'CC0 là tặng cộng đồng, dùng tự do. Ghi nguồn vẫn là thói quen tốt.' },
-    { sit: 'Em tải video bài giảng của người khác về rồi đăng nguyên video ấy lên kênh YouTube của mình, khi chưa hỏi tác giả.', tag: '© Bảo lưu mọi quyền', a: false,
-      why: 'Bảo lưu mọi quyền nghĩa là chỉ được xem. Đăng lại cần tác giả cho phép.' },
-    { sit: 'Em dịch một chương sách sang tiếng Việt, ghi tên tác giả và nguồn gốc, rồi chia sẻ bản dịch miễn phí cho bạn bè.', tag: 'CC BY', a: true,
-      why: 'CC BY cho phép dịch, chỉnh sửa và chia sẻ, miễn là ghi tên tác giả gốc.' },
-    { sit: 'Em sửa một bài viết của người khác rồi đăng lên blog cá nhân với dòng "Cấm mọi hình thức sao chép", dù bài gốc yêu cầu chia sẻ lại cùng giấy phép.', tag: 'CC BY-SA', a: false,
-      why: 'SA = chia sẻ tương tự. Bản sửa phải dùng cùng giấy phép mở, không được "khoá" lại.' },
+    ['✍️ Dùng lại thì phải ghi nguồn', 'Học liệu mở vẫn có tác giả. Khi dùng lại trong bài làm của mình, em cần ghi rõ nguồn và làm theo điều kiện sử dụng mà trang đó ghi.'],
   ],
 
-  // ---------- TRẠM 5: SĂN HỌC LIỆU MỞ (tự tìm trên Google) ----------
+  // ---------- TRẠM 4: SĂN HỌC LIỆU MỞ (tự tìm trên Google) ----------
   topics: [
     { no: 1, icon: '💻', subject: 'Tin học 10', title: 'Hệ nhị phân', kw: 'Hệ nhị phân Tin học 10' },
     { no: 2, icon: '🌿', subject: 'Sinh học', title: 'Quang hợp ở thực vật', kw: 'Quang hợp ở thực vật' },
@@ -216,7 +166,7 @@ window.B10 = {
   goodSigns: [
     'Trang của trường học, sở/bộ giáo dục (đuôi .edu.vn, .gov.vn), nhà xuất bản (nxbgd.vn, hoclieu.vn)',
     'Bách khoa toàn thư mở (Wikipedia), kho ảnh mở (Wikimedia Commons)',
-    'Ghi rõ tác giả hoặc đơn vị, có thông tin giấy phép hoặc bản quyền',
+    'Ghi rõ tác giả hoặc đơn vị, có ngày đăng hoặc thông tin bản quyền',
   ],
   badSigns: [
     'Nhiều quảng cáo, bắt tải phần mềm lạ hoặc nhập mật khẩu',
@@ -237,9 +187,9 @@ window.B10 = {
     { q: 'Em tìm được vài trang để ôn bài. Dấu hiệu nào giúp em chọn một trang học liệu đáng tin hơn?',
       o: ['Có nhiều quảng cáo nhấp nháy', 'Ghi rõ tác giả hoặc tổ chức uy tín, có ngày cập nhật', 'Tiêu đề viết HOA toàn bộ', 'Được chia sẻ nhiều trên mạng xã hội'], a: 1,
       e: 'Kiểm tra: ai làm ra, cập nhật khi nào, thuộc tổ chức nào.' },
-    { q: 'Em muốn dùng một bức ảnh có giấy phép CC BY-NC trên áp phích quảng cáo bán bánh của cửa hàng gia đình. Em nên làm gì?',
-      o: ['Dùng luôn, vì ảnh miễn phí', 'Dùng và xoá tên tác giả', 'Chọn ảnh khác có giấy phép phù hợp (CC BY, CC0) hoặc xin phép tác giả', 'Chụp màn hình ảnh để "lách" giấy phép'], a: 2,
-      e: 'NC không cho dùng vào việc có thu tiền. Hãy chọn ảnh khác hoặc xin phép.' },
+    { q: 'Em lấy một bức ảnh và một đoạn giải thích từ trang học liệu để đưa vào bài thuyết trình. Em nên làm gì?',
+      o: ['Dùng luôn, không cần ghi gì vì trang cho xem miễn phí', 'Xoá tên tác giả cho gọn slide', 'Ghi rõ nguồn (tên trang, tác giả, đường link) ngay dưới ảnh hoặc ở cuối bài', 'Nói với cả lớp đó là ảnh em tự chụp'], a: 2,
+      e: 'Học liệu mở vẫn có tác giả. Dùng lại thì phải ghi rõ nguồn.' },
     { q: 'Một trang web hứa "tải miễn phí bộ đề thi" nhưng bắt nhập mật khẩu email. Em làm gì?',
       o: ['Nhập mật khẩu để tải cho nhanh', 'Không nhập, rời trang và tìm trong kho học liệu uy tín', 'Nhập mật khẩu của bạn khác', 'Gửi đường link cho cả lớp cùng tải'], a: 1,
       e: 'Không bao giờ nhập mật khẩu để "tải tài liệu" (nhớ Bài 9). Học liệu mở thật không đòi mật khẩu email.' },

@@ -239,15 +239,6 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--c
 .seg button { border: 0; background: transparent; border-radius: 9px; padding: 7px 12px; cursor: pointer; font-weight: 600; font-size: 14px; }
 .seg button[aria-pressed="true"] { background: #fff; box-shadow: 0 1px 4px rgba(0, 0, 0, .12); color: var(--c); }
 
-/* ---------- giấy phép ---------- */
-.cc-legend { display: flex; flex-wrap: wrap; gap: 8px; }
-.cc { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 5px 11px 5px 5px; background: #fff; border: 1.5px solid var(--line); font-size: 14px; }
-.cc b { background: #1b1b1b; color: #fff; border-radius: 999px; padding: 2px 9px; font-size: 12.5px; letter-spacing: .04em; }
-.lic-tag { display: inline-block; background: #1b1b1b; color: #fff; border-radius: 8px; padding: 3px 10px; font-weight: 700; font-size: 13.5px; letter-spacing: .03em; margin-bottom: 8px; }
-.yn { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.yn .opt { justify-content: center; font-weight: 700; font-size: 16px; }
-.arr-box { background: var(--warn-soft, #fef3c7); border: 1.5px solid #f0c36d; margin-top: 14px; }
-.arr-box h3 { color: #92600c; }
 
 /* ---------- hướng dẫn từng bước ---------- */
 .step-no { display: inline-block; font-size: 12.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--c); background: color-mix(in srgb, var(--c) 12%, #fff); border-radius: 999px; padding: 3px 11px; margin-bottom: 6px; }
@@ -269,13 +260,6 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--c
 @media (max-width: 760px) { .grid3 { grid-template-columns: 1fr; } }
 .where-box { margin-top: 4px; }
 
-/* ---------- Trạm 4: quy tắc ghép kí hiệu CC ---------- */
-.cc-chain { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 10px 0 6px; }
-.cc-chain b { color: var(--c); font-size: 20px; }
-.cc-box { display: inline-flex; flex-direction: column; align-items: center; background: #1b1b1b; color: #fff; font-weight: 800; letter-spacing: .04em; border-radius: 10px; padding: 8px 14px; font-size: 17px; line-height: 1.1; }
-.cc-box.opt-box { background: #fff; color: #1b1b1b; border: 2px dashed #1b1b1b; }
-.cc-box i { font-style: normal; font-weight: 500; font-size: 13px; }
-.cc-box small { font-size: 11px; font-weight: 600; color: var(--muted); letter-spacing: 0; margin-top: 2px; }
 
 /* ---------- Trạm 5: dấu hiệu trang đáng tin ---------- */
 .signs { border-radius: 14px; padding: 12px 14px; font-size: 14.5px; }

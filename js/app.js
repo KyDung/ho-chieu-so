@@ -18,7 +18,7 @@
   // ---------- lưu trữ ----------
   const fresh = () => ({
     name: '', cls: '', group: '',
-    warm: { pick: null }, tools: {}, toolsRead: false, locks: {}, lic: {}, licOrder: {},
+    warm: { pick: null }, tools: {}, toolsRead: false, locks: {},
     desk: { tr: '' },
     hunt: { topic: null, url: '', site: '' },
     submitted: false,
@@ -132,7 +132,7 @@
 
   function render() {
     const r = route();
-    const views = { home: vHome, warm: vWarm, tools: vTools, locks: vLocks, desk: vDesk, lic: vLic, hunt: vHunt, exit: vExit, passport: vPassport };
+    const views = { home: vHome, warm: vWarm, tools: vTools, locks: vLocks, desk: vDesk, hunt: vHunt, exit: vExit, passport: vPassport };
     const fn = views[r] || vHome;
     document.documentElement.style.setProperty('--c', ST[r] ? ST[r].color : '#14203b');
     app.innerHTML = `<div class="view">${fn.html()}</div>`;
@@ -467,56 +467,7 @@
     },
   };
 
-  // ================= TRẠM 4: HỌC LIỆU MỞ & GIẤY PHÉP =================
-  const vLic = {
-    html() {
-      const n = Object.keys(S.lic).length + Object.keys(S.licOrder).length, total = D.lic.length + D.ccOrder.length;
-      const right = D.lic.filter((x, i) => S.lic[i] === x.a).length, rightO = D.ccOrder.filter((x, i) => S.licOrder[i] === x.a).length;
-      const yn = (key, i, x, p, yes, no) => {
-        const cls = (v) => p == null ? '' : v === x.a ? 'right' : v === p ? 'wrong' : '';
-        return `<div class="yn"><button class="opt ${cls(true)}" data-${key}="${i}" data-v="1" ${p != null ? 'disabled' : ''}>${yes}</button><button class="opt ${cls(false)}" data-${key}="${i}" data-v="0" ${p != null ? 'disabled' : ''}>${no}</button></div>
-          ${p != null ? `<div class="fb ${p === x.a ? 'ok' : 'no'}"><b>${p === x.a ? 'Chính xác!' : 'Chưa đúng.'}</b> ${esc(x.why)}</div>` : ''}`;
-      };
-      return `${hero('lic', n / total)}
-      <div class="step-no" style="margin-bottom:8px">Phần 1 · Đọc hiểu</div>
-      <div class="grid3">${D.oerIntro.map(([t, x]) => `<section class="card tint" style="margin:0"><h3>${esc(t)}</h3><p style="margin:6px 0 0">${esc(x)}</p></section>`).join('')}</div>
-      <section class="card" style="margin-top:14px">
-        <h3>Các kí hiệu Creative Commons (CC)</h3>
-        <div class="cc-legend" style="margin:10px 0">${D.ccLegend.map((c) => `<span class="cc"><b>${c.code}</b>${c.icon} ${esc(c.text)}</span>`).join('')}</div>
-        <h3 style="margin-top:14px">Quy tắc ghép kí hiệu thành tên giấy phép</h3>
-        <div class="cc-chain"><span class="cc-box">CC</span><b>→</b><span class="cc-box">BY</span><b>→</b><span class="cc-box opt-box">NC<small>nếu có</small></span><b>→</b><span class="cc-box opt-box">SA <i>hoặc</i> ND<small>nếu có</small></span></div>
-        <ol class="steps">${D.ccRules.map(([, t, x]) => `<li>${t}. <span class="muted">${esc(x)}</span></li>`).join('')}</ol>
-        <div class="label" style="margin-top:10px">Vì vậy chỉ có 6 giấy phép CC (và CC0), từ ít hạn chế đến chặt nhất:</div>
-        <table class="t" style="margin-top:6px">${D.ccList.map(([a, b]) => `<tr><td style="width:150px"><b>${esc(a)}</b></td><td>${esc(b)}</td></tr>`).join('')}</table>
-      </section>
-      <section class="card arr-box">
-        <h3>${D.arr.icon} Còn nếu tài liệu KHÔNG ghi giấy phép CC nào?</h3>
-        <p style="margin:6px 0 0">${esc(D.arr.text)}</p>
-      </section>
-      <div class="step-no" style="margin:18px 0 8px">Phần 2 · Kiểm tra tên giấy phép</div>
-      <p class="muted">Mỗi thẻ dưới đây là một cách ghi tên giấy phép Creative Commons. Dựa vào thứ tự CC → BY → NC (nếu có) → SA hoặc ND (nếu có), em chọn <b>Viết đúng</b> hoặc <b>Viết sai</b>.</p>
-      ${D.ccOrder.map((x, i) => `<section class="card qcard"><span class="num">Câu ${i + 1}</span>
-        <div class="q">Tên giấy phép <span class="lic-tag" style="font-size:16px">${esc(x.tag)}</span> đã được viết đúng thứ tự các kí hiệu chưa?</div>
-        ${yn('ord', i, x, S.licOrder[i], '✅ Viết đúng', '❌ Viết sai')}</section>`).join('')}
-      <div class="step-no" style="margin:18px 0 8px">Phần 3 · Em có được sử dụng tài nguyên theo cách này không?</div>
-      <p class="muted">Mỗi tình huống cho biết một bạn định sử dụng tài nguyên và giấy phép của tài nguyên đó. Em hãy xét <b>cách sử dụng đã nêu</b> có phù hợp giấy phép không. Mỗi câu chỉ chọn một lần.</p>
-      ${D.lic.map((x, i) => `<section class="card qcard"><span class="num">Tình huống ${i + 1}</span>
-        <div style="margin-top:6px">Giấy phép của tài nguyên: <span class="lic-tag">${esc(x.tag)}</span></div>
-        <div class="q" style="margin-top:0">${esc(x.sit)}</div>
-        ${yn('lic', i, x, S.lic[i], '✅ Được', '❌ Không được')}</section>`).join('')}
-      ${n === total ? `<section class="card tint"><h3>Kết quả: ${rightO}/${D.ccOrder.length} câu kí hiệu · ${right}/${D.lic.length} tình huống</h3><p class="small" style="margin:4px 0 0">Ở trạm tiếp theo, em sẽ tự tìm một trang học liệu trên Internet.</p></section>${nextBar('lic')}` : ''}`;
-    },
-    bind() {
-      const pick = (store, key) => $$(`[data-${key}]`).forEach((b) => b.onclick = () => {
-        store[b.dataset[key]] = b.dataset.v === '1'; save();
-        if (Object.keys(S.lic).length === D.lic.length && Object.keys(S.licOrder).length === D.ccOrder.length) award('lic');
-        rerender();
-      });
-      pick(S.licOrder, 'ord'); pick(S.lic, 'lic');
-    },
-  };
-
-  // ================= TRẠM 5: SĂN HỌC LIỆU (tìm trên Google) =================
+  // ================= TRẠM 4: SĂN HỌC LIỆU MỞ (tìm trên Google) =================
   function urlInfo(u) {
     try { const x = new URL(u.trim()); if (!/^https?:$/.test(x.protocol)) return { ok: false }; return { ok: !/(^|\.)google\./.test(x.hostname) && x.hostname.includes('.'), host: x.hostname.replace(/^www\./, ''), google: /(^|\.)google\./.test(x.hostname) }; } catch (e) { return { ok: false }; }
   }
@@ -531,7 +482,9 @@
       const h = S.hunt, st = huntState(), topic = D.topics.find((t) => t.no === h.topic);
       const q = topic ? `${topic.kw} ${D.searchSuffix}` : '';
       return `${hero('hunt', [st.a, st.b, done('hunt')].filter(Boolean).length / 3)}
-      <section class="card tint">
+      <div class="step-no" style="margin-bottom:8px">Đọc trước khi tìm</div>
+      <div class="grid3">${D.oerIntro.map(([t, x]) => `<section class="card tint" style="margin:0"><h3>${esc(t)}</h3><p style="margin:6px 0 0">${esc(x)}</p></section>`).join('')}</div>
+      <section class="card tint" style="margin-top:14px">
         <h3>🎯 Nhiệm vụ</h3>
         <p style="margin:6px 0 10px">Chọn một bài học, tìm trên Google một <b>trang học liệu</b> (kho học liệu, sách điện tử, bài giảng, bách khoa toàn thư…) có nội dung về bài đó, rồi dán link trang vào đây.</p>
         <div class="flow"><span>① Chọn bài học</span><b>→</b><span>② Tìm trên Google</span><b>→</b><span>③ Dán link</span></div>
@@ -612,7 +565,6 @@
   // Toàn bộ bài làm để dán lên Padlet một lần
   const fullText = () => {
     const toolsRight = D.tools.items.filter((it, i) => S.tools[i] === it.a).length;
-    const licRight = D.lic.filter((x, i) => S.lic[i] === x.a).length, ordRight = D.ccOrder.filter((x, i) => S.licOrder[i] === x.a).length;
     const locks = D.locks.filter((l) => S.locks[l.id] && S.locks[l.id].ok).length;
     const m = (id) => (done(id) ? '✅' : '⬜');
     const line = {
@@ -620,8 +572,7 @@
       tools: `Trạm 1 – Khám phá Google Dịch: ${Object.keys(S.tools).length ? toolsRight + '/' + D.tools.items.length + ' tình huống' : '–'}`,
       locks: `Trạm 2 – Phá khoá: ${locks}/${D.locks.length} ổ`,
       desk: `Trạm 3 – Dịch thư: ${done('desk') ? 'đã dịch sang tiếng Anh và nghe thử' : '–'}`,
-      lic: `Trạm 4 – Học liệu mở & giấy phép: ${Object.keys(S.lic).length ? ordRight + '/' + D.ccOrder.length + ' kí hiệu, ' + licRight + '/' + D.lic.length + ' tình huống' : '–'}`,
-      hunt: `Trạm 5 – Săn học liệu: ${done('hunt') ? 'đã tìm được' : '–'}`,
+      hunt: `Trạm 4 – Săn học liệu mở: ${done('hunt') ? 'đã tìm được' : '–'}`,
       exit: `Về đích: ${S.exit.done ? S.exit.score + '/' + D.exit.length : '–'}`,
     };
     return `🛂 BÀI LÀM – BÀI 10: THỰC HÀNH KHAI THÁC TÀI NGUYÊN TRÊN INTERNET\n` +
@@ -629,7 +580,7 @@
       `Số dấu: ${doneCount()}/${D.stations.length}\n\n` +
       `— KẾT QUẢ CÁC TRẠM —\n` + D.stations.map((x) => `${m(x.id)} ${line[x.id]}`).join('\n') +
       (done('desk') ? `\n\n— TRẠM 3: DỊCH THƯ GỬI BẠN EMMA —\n📝 Thư gốc tiếng Việt:\n${deskSource()}\n\n🌍 Bản tiếng Anh (Google Dịch):\n${S.desk.tr.trim()}` : '') +
-      (done('hunt') ? `\n\n— TRẠM 5: TRANG HỌC LIỆU EM TÌM ĐƯỢC —\n${huntText()}` : '') +
+      (done('hunt') ? `\n\n— TRẠM 4: TRANG HỌC LIỆU EM TÌM ĐƯỢC —\n${huntText()}` : '') +
       `\n\n— SUY NGẪM —\n${S.exit.reflect || ''}\n\n⏱ ${now()}`;
   };
   const vPassport = {
@@ -655,7 +606,7 @@
         <h3>🏠 Nhiệm vụ vận dụng (về nhà)</h3>
         <p style="margin:8px 0">Tạo <b>"Bộ tài nguyên tự học"</b> cho một môn em thấy khó:</p>
         <ol class="steps">
-          <li>Tìm <b>3 học liệu mở</b> ở ít nhất 2 kho khác nhau, mỗi học liệu ghi: tên, link, trang/kho, giấy phép, điều em học được.</li>
+          <li>Tìm <b>3 học liệu mở</b> ở ít nhất 2 kho khác nhau, mỗi học liệu ghi: tên, link, trang/kho, ai làm ra, điều em học được.</li>
           <li>Chọn 1 đoạn tài liệu tiếng nước ngoài trong số đó (hoặc một tệp của em), dịch bằng thẻ <b>Tài liệu</b> hoặc <b>Dịch trang</b>, rồi ghi lại <b>3 chỗ</b> em thấy bản dịch chưa sát nghĩa.</li>
           <li>Đăng bài mới lên Padlet, tiêu đề ghi <b>Vận dụng – Họ tên – Lớp</b>.</li>
         </ol>
