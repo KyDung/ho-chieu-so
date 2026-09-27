@@ -6,7 +6,7 @@ window.B10_CONFIG = {
 
   // Địa chỉ trang học sinh khi đưa lên mạng (ví dụ GitHub Pages) để tạo mã QR.
   // Để trống: trang giáo viên tự đoán từ địa chỉ hiện tại.
-  studentUrl: "",
+  studentUrl: "https://kydung.github.io/ho-chieu-so/index.html",
 
   schoolName: "THCS & THPT Hà Thành",
 
